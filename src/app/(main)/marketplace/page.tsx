@@ -1,13 +1,10 @@
 'use client';
 
 import Button from "@/app/components/Button";
-import { ChevronRight, LucideArrowLeft, LucideArrowRight, LucideLocate, MapPin } from "lucide-react";
+import { ChevronRight, MapPin } from "lucide-react";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import { FaArrowLeft } from "react-icons/fa";
-import { FaArrowLeftLong } from "react-icons/fa6";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
-import { MdArrowForward } from "react-icons/md";
 
 const propertySlides = [
     [
