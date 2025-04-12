@@ -1,6 +1,5 @@
 "use client"
 
-// components/ContactUsSection.jsx
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, MessageSquare } from 'lucide-react';
 
@@ -12,16 +11,15 @@ export default function ContactUsSection() {
         message: ''
     });
 
-    const handleChange = (e:any) => {
+    const handleChange = (e: any) => {
         setFormData({
             ...formData,
             [e.target.name]: e.target.value
         });
     };
 
-    const handleSubmit = (e:any) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
-        // Handle form submission logic here
         console.log('Form submitted:', formData);
         // Reset form
         setFormData({
@@ -35,23 +33,23 @@ export default function ContactUsSection() {
     };
 
     return (
-        <section className="h-screen bg-white flex items-center">
+        <section className="h-screen bg-[#F8F7F2] flex items-center">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
                 <div className="text-center mb-12">
-                    <h4 className="text-indigo-600 font-semibold mb-2">Get In Touch</h4>
+                    <h4 className="text-[#7B4F3A] font-semibold mb-2">Get In Touch</h4>
                     <h2 className="text-4xl font-bold text-gray-900 mb-4">Contact Us</h2>
                     <p className="max-w-2xl mx-auto text-gray-600">
-                        Have questions about Heivera? Our team is here to help you with anything you need.
+                        Have questions about Heuvera? Our team is here to help you with anything you need.
                     </p>
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     {/* Contact Info Cards */}
                     <div className="lg:col-span-1 space-y-6">
-                        <div className="bg-gray-50 p-6 rounded-lg transition-all duration-300 hover:shadow-md">
+                        <div className="bg-[#7B4F3A06] p-6 rounded-lg transition-all duration-300 hover:shadow-md">
                             <div className="flex items-start">
-                                <div className="bg-indigo-100 p-3 rounded-full">
-                                    <Mail className="h-6 w-6 text-indigo-600" />
+                                <div className="bg-[#7B4F3A44] p-3 rounded-full">
+                                    <Mail className="h-6 w-6 text-[#7B4F3A]" />
                                 </div>
                                 <div className="ml-4">
                                     <h4 className="text-lg font-medium text-gray-900">Email Us</h4>
@@ -61,10 +59,11 @@ export default function ContactUsSection() {
                             </div>
                         </div>
 
-                        <div className="bg-gray-50 p-6 rounded-lg transition-all duration-300 hover:shadow-md">
+                        <div className="bg-[#7B4F3A06] p-6 rounded-lg transition-all duration-300 hover:shadow-md">
                             <div className="flex items-start">
-                                <div className="bg-indigo-100 p-3 rounded-full">
-                                    <Phone className="h-6 w-6 text-indigo-600" />
+                                <div className="bg-[#7B4F3A44] p-3 rounded-full">
+
+                                    <Phone className="h-6 w-6 text-[#7B4F3A]" />
                                 </div>
                                 <div className="ml-4">
                                     <h4 className="text-lg font-medium text-gray-900">Call Us</h4>
@@ -74,10 +73,11 @@ export default function ContactUsSection() {
                             </div>
                         </div>
 
-                        <div className="bg-gray-50 p-6 rounded-lg transition-all duration-300 hover:shadow-md">
+                        <div className="bg-[#7B4F3A06] p-6 rounded-lg transition-all duration-300 hover:shadow-md">
                             <div className="flex items-start">
-                                <div className="bg-indigo-100 p-3 rounded-full">
-                                    <MapPin className="h-6 w-6 text-indigo-600" />
+                                <div className="bg-[#7B4F3A44] p-3 rounded-full">
+
+                                    <MapPin className="h-6 w-6 text-[#7B4F3A]" />
                                 </div>
                                 <div className="ml-4">
                                     <h4 className="text-lg font-medium text-gray-900">Visit Us</h4>
@@ -87,15 +87,16 @@ export default function ContactUsSection() {
                             </div>
                         </div>
 
-                        <div className="bg-gray-50 p-6 rounded-lg transition-all duration-300 hover:shadow-md">
+                        <div className="bg-[#7B4F3A06] p-6 rounded-lg transition-all duration-300 hover:shadow-md">
                             <div className="flex items-start">
-                                <div className="bg-indigo-100 p-3 rounded-full">
-                                    <MessageSquare className="h-6 w-6 text-indigo-600" />
+                                <div className="bg-[#7B4F3A44] p-3 rounded-full">
+
+                                    <MessageSquare className="h-6 w-6 text-[#7B4F3A]" />
                                 </div>
                                 <div className="ml-4">
                                     <h4 className="text-lg font-medium text-gray-900">Live Chat</h4>
                                     <p className="mt-1 text-gray-600">Chat with our support team</p>
-                                    <button className="mt-2 text-indigo-600 font-medium text-sm">
+                                    <button className="mt-2 text-[#6A432F] font-medium text-sm">
                                         Start Chat
                                     </button>
                                 </div>
@@ -104,7 +105,7 @@ export default function ContactUsSection() {
                     </div>
 
                     {/* Contact Form */}
-                    <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-8">
+                    <div className="lg:col-span-2 bg-[#F8F7F2] rounded-lg shadow-lg p-8">
                         <h3 className="text-2xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
 
                         <form onSubmit={handleSubmit}>
@@ -176,7 +177,7 @@ export default function ContactUsSection() {
 
                             <button
                                 type="submit"
-                                className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-4 rounded-lg transition duration-150 flex items-center justify-center"
+                                className="w-full bg-[#7B4F3A] hover:bg-[#6A432F] text-white font-medium py-3 px-4 rounded-lg transition duration-150 flex items-center justify-center"
                             >
                                 <Send className="h-5 w-5 mr-2" />
                                 Send Message
