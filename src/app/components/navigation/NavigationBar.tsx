@@ -1,5 +1,6 @@
 "use client";
 
+import Button from "../Button";
 import { HeuveraLogo } from "../logo/HeuveraLogo";
 import { Menu } from "lucide-react";
 
@@ -12,7 +13,7 @@ const navLinks = [
 
 export default function NavigationBar() {
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm">
+        <nav className="fixed top-0 left-0 w-full z-50 bg-[#F8F7F2] backdrop-blur-md shadow-sm">
             <style jsx global>{`
             .animated-underline {
             position: relative;
@@ -57,14 +58,10 @@ export default function NavigationBar() {
                     </div>
 
                     {/* Right: Login CTA */}
-                    <div className="hidden md:flex">
-                        <a
-                            href="/login"
-                            className="px-4 py-2 rounded-md bg-[#7b4f3a] text-white text-sm font-semibold hover:opacity-90 transition"
-                        >
-                            Login
-                        </a>
-                    </div>
+                    
+                    <Button className="max-w-fit" href="/login">
+                        Login
+                    </Button>
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">

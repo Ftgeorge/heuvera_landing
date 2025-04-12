@@ -1,10 +1,11 @@
+import Button from '@/app/components/Button';
 import { Home, DollarSign, Calendar, Shield } from 'lucide-react';
 import Image from 'next/image';
 
 export default function HostWithUsSection() {
     return (
         <section className="h-screen bg-[#7B4F3A22] flex items-center overflow-hidden relative">
-            
+
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B4F3A44] rounded-full -mr-32 -mt-16 opacity-70"></div>
             <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#7B4F3A44] rounded-full -ml-48 -mb-24 opacity-70"></div>
 
@@ -95,11 +96,10 @@ export default function HostWithUsSection() {
                                 </div>
                             </div>
                         </div>
-
-                        <button className="w-full sm:w-auto px-6 py-3 bg-[#7B4F3A] text-white font-medium rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 flex items-center justify-center">
+                        <Button className='max-w-fit'>
                             <Calendar size={18} className="mr-2" />
                             Start Hosting Today
-                        </button>
+                        </Button>
                     </div>
                 </div>
             </div>

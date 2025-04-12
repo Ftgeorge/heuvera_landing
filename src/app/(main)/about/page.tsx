@@ -1,4 +1,5 @@
 // components/AboutUsSection.jsx
+import Button from '@/app/components/Button';
 import { Users, Award, Clock, Globe } from 'lucide-react';
 import Image from 'next/image';
 
@@ -78,9 +79,9 @@ export default function AboutUsSection() {
                         </div>
 
                         <div className="flex space-x-4">
-                            <button className="px-6 py-3 bg-[#7B4F3A] text-white font-medium rounded-lg hover:bg-indigo-700 transition duration-200 shadow-md">
+                            <Button className='max-w-fit'>
                                 Our Story
-                            </button>
+                            </Button>
                             {/* <button className="px-6 py-3 border border-gray-300 text-gray-700 font-medium rounded-lg hover:bg-gray-50 transition duration-200">
                                 Join Our Team
                             </button> */}
