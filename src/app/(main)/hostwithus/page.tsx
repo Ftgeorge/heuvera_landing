@@ -3,10 +3,10 @@ import { Home, DollarSign, Calendar, Shield, Calculator } from 'lucide-react';
 
 export default function HostWithUsSection() {
     return (
-        <section className="h-screen bg-indigo-50 flex items-center overflow-hidden relative">
+        <section className="h-screen bg-[#7B4F3A22] flex items-center overflow-hidden relative">
             {/* Background decorative elements */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-100 rounded-full -mr-32 -mt-16 opacity-70"></div>
-            <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-100 rounded-full -ml-48 -mb-24 opacity-70"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B4F3A44] rounded-full -mr-32 -mt-16 opacity-70"></div>
+            <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#7B4F3A44] rounded-full -ml-48 -mb-24 opacity-70"></div>
 
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -40,7 +40,7 @@ export default function HostWithUsSection() {
                         <div className="mb-6">
                             <h4 className="text-indigo-600 font-semibold mb-2">Host With Us</h4>
                             <h2 className="text-4xl font-bold text-gray-900 mb-4">Share Your Space, Earn Your Way</h2>
-                            <div className="w-20 h-1 bg-indigo-600 rounded"></div>
+                            <div className="w-20 h-1 bg-[#7B4F3A] rounded"></div>
                         </div>
 
                         <p className="text-gray-700 mb-8 text-lg">
@@ -51,7 +51,7 @@ export default function HostWithUsSection() {
                         <div className="space-y-6 mb-8">
                             <div className="flex">
                                 <div className="flex-shrink-0">
-                                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A22]0 text-white">
                                         <Home size={24} />
                                     </div>
                                 </div>
@@ -65,7 +65,7 @@ export default function HostWithUsSection() {
 
                             <div className="flex">
                                 <div className="flex-shrink-0">
-                                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A22]0 text-white">
                                         <DollarSign size={24} />
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@ export default function HostWithUsSection() {
 
                             <div className="flex">
                                 <div className="flex-shrink-0">
-                                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                    <div className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A22]0 text-white">
                                         <Shield size={24} />
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@ export default function HostWithUsSection() {
                             </button>
                         </div>
 
-                        <button className="w-full sm:w-auto px-6 py-3 bg-indigo-600 text-white font-medium rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 flex items-center justify-center">
+                        <button className="w-full sm:w-auto px-6 py-3 bg-[#7B4F3A] text-white font-medium rounded-lg shadow-md hover:bg-indigo-700 transition duration-200 flex items-center justify-center">
                             <Calendar size={18} className="mr-2" />
                             Start Hosting Today
                         </button>

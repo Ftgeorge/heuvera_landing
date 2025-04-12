@@ -44,7 +44,7 @@ export default function ContactUsSection() {
                 </div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    {/* Contact Info Cards */}
+
                     <div className="lg:col-span-1 space-y-6">
                         <div className="bg-[#7B4F3A06] p-6 rounded-lg transition-all duration-300 hover:shadow-md">
                             <div className="flex items-start">
@@ -90,7 +90,6 @@ export default function ContactUsSection() {
                         <div className="bg-[#7B4F3A06] p-6 rounded-lg transition-all duration-300 hover:shadow-md">
                             <div className="flex items-start">
                                 <div className="bg-[#7B4F3A44] p-3 rounded-full">
-
                                     <MessageSquare className="h-6 w-6 text-[#7B4F3A]" />
                                 </div>
                                 <div className="ml-4">
