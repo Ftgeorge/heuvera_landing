@@ -26,7 +26,7 @@ export default function NavigationBar() {
             height: 1px;
             bottom: -2px;
             left: 0;
-            background-color: #7b4f3a;
+            background-color: #7B4F3A;
             transition: width 0.3s ease-in-out;
             }
 
