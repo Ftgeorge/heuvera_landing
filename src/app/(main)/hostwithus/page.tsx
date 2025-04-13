@@ -30,7 +30,6 @@ export default function HostWithUsSection() {
     // Using a reduced multiplier for more subtle effect
     const parallaxOffset = scrollY * 0.2;
 
-    // Use a local image path instead of remote URL for better reliability
     const backgroundImage = "http://images.unsplash.com/photo-1728825445493-1a6e89164511?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // Make sure this image exists in your public folder
 
     // Animation variants
@@ -158,8 +157,8 @@ export default function HostWithUsSection() {
                             viewport={{ once: true, amount: 0.3 }}
                             variants={slideUp}
                         >
-                            <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold mb-2">Host With Us</h4>
-                            <h2 className="text-4xl font-bold text-[#F8F7F2] dark:text-[#F8F7F2] mb-4">Share Your Space, Earn Your Way</h2>
+                            <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold mb-2 text-sm md:text-sm lg:text-sm xl:text-base">Host With Us</h4>
+                            <h2 className="text-xl md:text-2xl lg:text-2xl xl:text-3xl 2xl:text-4xl font-bold text-[#F8F7F2] dark:text-[#F8F7F2] mb-4">Share Your Space, Earn Your Way</h2>
                             <motion.div 
                                 className="w-20 h-1 bg-[#7B4F3A] dark:bg-[#8B5F4D] rounded"
                                 initial={{ width: 0 }}
@@ -169,9 +168,9 @@ export default function HostWithUsSection() {
                         </motion.div>
 
                         <motion.p 
-                            className="text-[#A7A7A7] dark:text-[#A7A7A7] mb-8 text-lg"
+                            className="text-[#A7A7A7] dark:text-[#A7A7A7] mb-8 text-sm md:text-sm lg:text-sm xl:text-lg"
                             initial="hidden"
-                            whileInView="visible"
+                            whileInView="visible"    
                             viewport={{ once: true, amount: 0.3 }}
                             variants={fadeIn}
                         >
@@ -186,10 +185,10 @@ export default function HostWithUsSection() {
                             viewport={{ once: true, amount: 0.1 }}
                             variants={staggerFeatures}
                         >
-                            <motion.div className="flex" variants={featureItem}>
+                            <motion.div className="flex items-center" variants={featureItem}>
                                 <div className="flex-shrink-0">
                                     <motion.div 
-                                        className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A] dark:bg-[#8B5F4D] text-white"
+                                        className="flex items-center justify-center size-10 md:size-10 lg:size-10 xl:size-12 rounded-md bg-[#7B4F3A] dark:bg-[#8B5F4D] text-white"
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
@@ -197,17 +196,17 @@ export default function HostWithUsSection() {
                                     </motion.div>
                                 </div>
                                 <div className="ml-4">
-                                    <h5 className="text-lg font-medium text-[#A7A7A7] dark:text-[#A7A7A7]">List Any Space</h5>
-                                    <p className="mt-1 text-[#888888] dark:text-[#888888]">
+                                    <h5 className="text-sm md:text-sm lg:text-sm xl:text-lg font-medium text-[#A7A7A7] dark:text-[#A7A7A7]">List Any Space</h5>
+                                    <p className="mt-1 text-[#888888] dark:text-[#888888] text-sm md:text-sm lg:text-sm xl:text-lg">
                                         Whether it's a vacation home, spare room, or unique space, our platform welcomes all types of properties.
                                     </p>
                                 </div>
                             </motion.div>
 
-                            <motion.div className="flex" variants={featureItem}>
+                            <motion.div className="flex items-center" variants={featureItem}>
                                 <div className="flex-shrink-0">
                                     <motion.div 
-                                        className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A] dark:bg-[#8B5F4D] text-white"
+                                        className="flex items-center justify-center size-10 md:size-10 lg:size-10 xl:size-12 rounded-md bg-[#7B4F3A] dark:bg-[#8B5F4D] text-white"
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
@@ -215,17 +214,17 @@ export default function HostWithUsSection() {
                                     </motion.div>
                                 </div>
                                 <div className="ml-4">
-                                    <h5 className="text-lg font-medium text-[#A7A7A7] dark:text-[#A7A7A7]">Earn More</h5>
-                                    <p className="mt-1 text-[#888888] dark:text-[#888888]">
+                                    <h5 className="text-sm md:text-sm lg:text-sm xl:text-lg font-medium text-[#A7A7A7] dark:text-[#A7A7A7]">Earn More</h5>
+                                    <p className="mt-1 text-[#888888] dark:text-[#888888] text-sm md:text-sm lg:text-sm xl:text-lg">
                                         Set your own prices and availability. Most hosts earn enough to cover their mortgage or rent—and then some.
                                     </p>
                                 </div>
                             </motion.div>
 
-                            <motion.div className="flex" variants={featureItem}>
+                            <motion.div className="flex items-center" variants={featureItem}>
                                 <div className="flex-shrink-0">
                                     <motion.div 
-                                        className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A] dark:bg-[#8B5F4D] text-white"
+                                        className="flex items-center justify-center size-10 md:size-10 lg:size-10 xl:size-12 rounded-md bg-[#7B4F3A] dark:bg-[#8B5F4D] text-white"
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
@@ -233,8 +232,8 @@ export default function HostWithUsSection() {
                                     </motion.div>
                                 </div>
                                 <div className="ml-4">
-                                    <h5 className="text-lg font-medium text-[#A7A7A7] dark:text-[#A7A7A7]">Host with Confidence</h5>
-                                    <p className="mt-1 text-[#888888] dark:text-[#888888]">
+                                    <h5 className="text-sm md:text-sm lg:text-sm xl:text-lg font-medium text-[#A7A7A7] dark:text-[#A7A7A7]">Host with Confidence</h5>
+                                    <p className="mt-1 text-[#888888] dark:text-[#888888] text-sm md:text-sm lg:text-sm xl:text-lg">
                                         Our verification process, secure payments, and $1M property protection give you peace of mind.
                                     </p>
                                 </div>
