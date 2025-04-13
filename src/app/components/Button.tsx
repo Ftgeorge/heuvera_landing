@@ -23,7 +23,7 @@ export default function Button({ children, className, href }: ButtonProps) {
             <button
                 type="submit"
                 onClick={handleClick}
-                className={`bg-[#7B4F3A] hover:bg-[#6A432F] text-white font-medium px-8 py-3 rounded-lg transition duration-150 flex items-center justify-center text-sm ${className}`}
+                className={`bg-[#7B4F3A] dark:bg-[#8B5F4D] hover:bg-[#6A432F] hover:dark:bg-[#7B4F3A] text-white font-medium px-8 py-3 rounded-lg transition duration-150 flex items-center justify-center text-sm ${className}`}
             >
                 {children}
             </button>
