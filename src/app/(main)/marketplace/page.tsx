@@ -85,7 +85,7 @@ const propertySlides = [
 
 export default function Marketplace() {
     const [currentSlide, setCurrentSlide] = useState(0);
-    const [direction, setDirection] = useState(0); // -1 for left, 1 for right, 0 for initial
+    const [direction, setDirection] = useState(0);
 
     const handlePrev = () => {
         setDirection(-1);
