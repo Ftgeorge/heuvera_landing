@@ -1,54 +1,56 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import Button from "../Button";
+import { ChevronRight, Compass } from "lucide-react";
 export default function Hero() {
-    const videos = [
-        "https://cdn.coverr.co/videos/coverr-aerial-view-of-beach-resort-6782/1080p.mp4",
-        "https://cdn.coverr.co/videos/coverr-sunrise-over-the-ocean-8860/1080p.mp4",
-        "https://cdn.coverr.co/videos/coverr-snowy-mountain-scenery-1277/1080p.mp4",
-    ];
-
-    const [currentVideo, setCurrentVideo] = useState(0);
+    const [scrollY, setScrollY] = useState(0);
 
     useEffect(() => {
-        const videoChangeInterval = setInterval(() => {
-            setCurrentVideo((prev) => (prev + 1) % videos.length);
-        }, 10000); // 10 seconds for slow transition, adjust as needed
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+        };
 
-        return () => clearInterval(videoChangeInterval);
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    const backgroundImages = [
+        "https://mtrgycro9i.ufs.sh/f/8rGFBkantSc3KAU95Q4oABY0aqEjF4QrpIGc3dw68HTMCNuv",
+    ];
 
     return (
         <section className="relative h-screen w-full overflow-hidden">
-            {/* Background Video Slideshow */}
-            <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute top-0 left-0 w-full h-full object-cover z-0"
-                key={videos[currentVideo]} // Update the video source on each change
-                style={{ animation: "slow-fade 10s infinite" }}
-                ref={(videoElement) => {
-                    if (videoElement) {
-                        videoElement.playbackRate = 0.5; // Set the playback speed (0.5x)
-                    }
+            <div
+                className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-500 ease-out"
+                style={{
+                    backgroundImage: `url(${backgroundImages[0]})`,
+                    transform: `translateY(${scrollY * 0.5}px)`
                 }}
-            >
-                <source src={videos[currentVideo]} type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
-
-            {/* Dark Overlay */}
-            <div className="absolute inset-0 bg-black bg-opacity-50 z-10" />
-
-            {/* Text Content */}
-            <div className="absolute bottom-10 left-8 z-20 text-white">
-                <h1 className="text-4xl md:text-5xl font-bold mb-2">Welcome to Heuvera</h1>
-                <p className="text-base md:text-lg text-gray-200 max-w-md">
-                    Discover virtual real estate reimagined. Explore, host, and connect in a whole new way.
-                </p>
+            />
+            <div className="absolute inset-0 bg-black/40 z-10" />
+            <div className="relative h-full flex flex-col items-center justify-center z-20 px-4 md:px-8">
+                <div className="text-center text-white max-w-4xl mx-auto mb-10">
+                    <h1 className="text-5xl md:text-6xl font-bold mb-4 leading-tight">Welcome to Heuvera</h1>
+                    <p className="text-xl md:text-2xl text-gray-200 mb-8">
+                        Discover virtual real estate reimagined. Explore, host, and connect in a whole new way.
+                    </p>
+                    <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+                        <Button className="px-8 py-3 gap-2">
+                            Explore Properties
+                            <Compass/>
+                        </Button>
+                        <Button className="px-8 py-3 bg-transparent hover:bg-white/10 border-2 border-white text-white transition-colors">
+                            Learn More
+                            <ChevronRight/>
+                        </Button>
+                    </div>
+                </div>
+                <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 5v14M5 12l7 7 7-7" />
+                    </svg>
+                </div>
             </div>
         </section>
     );

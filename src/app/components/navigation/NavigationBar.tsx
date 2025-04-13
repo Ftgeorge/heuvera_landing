@@ -2,7 +2,7 @@
 
 import Button from "../Button";
 import { HeuveraLogo } from "../logo/HeuveraLogo";
-import { Menu } from "lucide-react";
+import { ArrowRight, LogIn, Menu } from "lucide-react";
 
 const navLinks = [
     { name: "Marketplace", href: "/marketplace" },
@@ -59,8 +59,9 @@ export default function NavigationBar() {
 
                     {/* Right: Login CTA */}
                     
-                    <Button className="max-w-fit" href="/login">
+                    <Button className="max-w-fit gap-2" href="/login">
                         Login
+                        <LogIn/>
                     </Button>
 
                     {/* Mobile Menu Button */}

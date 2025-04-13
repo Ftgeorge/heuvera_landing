@@ -7,17 +7,80 @@ import { useEffect, useState } from "react";
 import { GoArrowLeft, GoArrowRight } from "react-icons/go";
 
 const propertySlides = [
-    [
-        { title: "Bathroom", image: "/apartment.jpg" },
-        { title: "Bedroom", image: "/apartment.jpg" },
-        { title: "Living Room", image: "/apartment.jpg" },
-    ],
-    [
-        { title: "Balcony", image: "/apartment.jpg" },
-        { title: "Kitchen", image: "/apartment.jpg" },
-        { title: "Dining Room", image: "/apartment.jpg" },
-    ],
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom.jpg" },
+            { title: "Bathroom", image: "/bathroom.jpg" },
+            { title: "Living Room", image: "/living-room.jpg" },
+        ],
+        location: "Karu, Abuja",
+        country: "Nigeria",
+    },
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom2.jpg" },
+            { title: "Bathroom", image: "/bathroom2.jpg" },
+            { title: "Living Room", image: "/living-room2.jpg" },
+        ],
+        location: "Lekki, Lagos",
+        country: "Nigeria",
+    },
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom3.jpg" },
+            { title: "Bathroom", image: "/bathroom3.jpg" },
+            { title: "Living Room", image: "/living-room3.jpg" },
+        ],
+        location: "Wuse 2, Abuja",
+        country: "Nigeria",
+    },
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom4.jpg" },
+            { title: "Bathroom", image: "/bathroom4.jpg" },
+            { title: "Living Room", image: "/living-room4.jpg" },
+        ],
+        location: "GRA, Port Harcourt",
+        country: "Nigeria",
+    },
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom5.jpg" },
+            { title: "Bathroom", image: "/bathroom5.jpg" },
+            { title: "Living Room", image: "/living-room5.jpg" },
+        ],
+        location: "Ikeja, Lagos",
+        country: "Nigeria",
+    },
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom6.jpg" },
+            { title: "Bathroom", image: "/bathroom6.jpg" },
+            { title: "Living Room", image: "/living-room6.jpg" },
+        ],
+        location: "Asokoro, Abuja",
+        country: "Nigeria",
+    },
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom7.jpg" },
+            { title: "Bathroom", image: "/bathroom7.jpg" },
+            { title: "Living Room", image: "/living-room7.jpg" },
+        ],
+        location: "Enugu GRA, Enugu",
+        country: "Nigeria",
+    },
+    {
+        images: [
+            { title: "Bedroom", image: "/bedroom8.jpg" },
+            { title: "Bathroom", image: "/bathroom8.jpg" },
+            { title: "Living Room", image: "/living-room8.jpg" },
+        ],
+        location: "Ring Road, Ibadan",
+        country: "Nigeria",
+    },
 ];
+
 
 export default function Marketplace() {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -76,7 +139,7 @@ export default function Marketplace() {
                 {/* Right side carousel */}
                 <div className="w-8/12 h-4/6 flex flex-col gap-5 relative">
                     <div className="w-full grid grid-cols-3 gap-6 h-full z-10">
-                        {propertySlides[currentSlide].map((property, index) => (
+                        {propertySlides[currentSlide].images.map((property, index) => (
                             <div key={index} className="w-full h-full bg-[#F8F7F2] relative rounded-xl overflow-hidden shadow-md">
                                 <Image
                                     src={property.image}
@@ -95,15 +158,14 @@ export default function Marketplace() {
                     <div className="absolute -top-5 -left-5 w-20 h-20 bg-[#7B4F3A44] rounded-lg z-0"></div>
                     <div className="absolute bottom-10 -right-5 w-20 h-20 bg-[#7B4F3A66] rounded-lg z-0"></div>
 
-                    <div className="w-full flex justify-between items-center">
-                        <div className="flex gap-2 items-center">
-                            <MapPin />
-                            <div>
-                                <h1 className="font-semibold">Gulshan Avenue, Dhaka</h1>
-                                <h2 className="text-sm text-gray-600">Bangladesh</h2>
-                            </div>
+                    <div className="flex gap-2 items-center">
+                        <MapPin />
+                        <div>
+                            <h1 className="font-semibold">{propertySlides[currentSlide].location}</h1>
+                            <h2 className="text-sm text-gray-600">{propertySlides[currentSlide].country}</h2>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
