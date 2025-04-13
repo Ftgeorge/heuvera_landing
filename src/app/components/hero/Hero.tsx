@@ -8,13 +8,27 @@ export default function Hero() {
 
     useEffect(() => {
         const handleScroll = () => {
-            setScrollY(window.scrollY);
+            // Requesting animation frame for smoother performance
+            window.requestAnimationFrame(() => {
+                setScrollY(window.scrollY);
+            });
         };
 
-        window.addEventListener("scroll", handleScroll);
+        // Add event listener
+        window.addEventListener("scroll", handleScroll, { passive: true });
+
+        // Initial call to set position
+        handleScroll();
+
+        // Cleanup
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
+    const parallaxOffset = scrollY * 0.2;
+
+
+    // Using a reduced multiplier for more subtle effect
+    
     const backgroundImages = [
         "https://mtrgycro9i.ufs.sh/f/8rGFBkantSc3KAU95Q4oABY0aqEjF4QrpIGc3dw68HTMCNuv",
     ];
@@ -22,10 +36,14 @@ export default function Hero() {
     return (
         <section className="relative h-screen w-full overflow-hidden">
             <div
-                className="absolute inset-0 bg-cover bg-center z-0 transition-transform duration-500 ease-out"
+                className="absolute inset-0 bg-center bg-no-repeat bg-cover will-change-transform"
                 style={{
-                    backgroundImage: `url(${backgroundImages[0]})`,
-                    transform: `translateY(${scrollY * 0.5}px)`
+                    backgroundImage: `url(${backgroundImages})`,
+                    height: '120%', // Oversize the image slightly to avoid blank areas when scrolling
+                    top: '0%',
+                    transform: `translateY(${parallaxOffset}px)`,
+                    transition: 'transform 0.1s ease-out',
+                    zIndex: 0,
                 }}
             />
             <div className="absolute inset-0 bg-black/40 z-10" />
@@ -38,11 +56,11 @@ export default function Hero() {
                     <div className="flex flex-col sm:flex-row justify-center gap-4 mt-6">
                         <Button className="px-8 py-3 gap-2">
                             Explore Properties
-                            <Compass/>
+                            <Compass />
                         </Button>
                         <Button className="px-8 py-3 bg-transparent hover:bg-white/10 border-2 border-white text-white transition-colors">
                             Learn More
-                            <ChevronRight/>
+                            <ChevronRight />
                         </Button>
                     </div>
                 </div>
