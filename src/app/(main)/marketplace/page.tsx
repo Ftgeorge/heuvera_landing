@@ -137,7 +137,7 @@ export default function Marketplace() {
     };
 
     const buttonVariants = {
-        hover: { 
+        hover: {
             scale: 1.05,
             transition: {
                 type: "spring",
@@ -187,36 +187,37 @@ export default function Marketplace() {
     };
 
     return (
-        <motion.div 
+        <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8 }}
-            className="h-screen bg-[#F8F7F2] dark:bg-[#333333] w-full flex items-center justify-center px-36"
+            className="h-screen bg-[#F8F7F2] dark:bg-[#333333] w-full flex items-center justify-center px-4 md:px-14 lg:px-16 xl:px-20 2xl:px-36 py-10 md:py-0"
         >
-            <div className="w-full flex items-center justify-center h-full">
+
+            <div className="w-full flex flex-col-reverse md:flex-row items-center justify-center h-full">
                 {/* Left side */}
-                <motion.div 
-                    className="w-4/12 pr-6 flex flex-col h-4/6 justify-center gap-16"
+                <motion.div
+                    className="w-12/12 md:w-4/12 pr-6 flex flex-col md:h-4/6 justify-center gap-8 md:gap-16"
                     variants={containerVariants}
                     initial="hidden"
                     animate="visible"
                 >
                     <motion.div variants={itemVariants}>
-                        <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold">Marketplace</h4>
+                        <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold hidden md:block">Marketplace</h4>
                     </motion.div>
-                    <motion.div 
-                        className="pb-28"
+                    <motion.div
+                        className="pb-18 md:pb-28"
                         variants={itemVariants}
                     >
-                        <h1 className="text-[#323232] dark:text-[#F8F7F2] text-7xl font-medium absolute z-20 [text-shadow:_3px_3px_6px_rgba(0,0,0,0.3)]">
-                            Minimal Living a<span className="text-[#7B4F3A] dark:text-[#8B5F4D]">t its</span><br></br> finest
+                        <h1 className="text-[#323232] dark:text-[#F8F7F2] text-3xl md:text-4xl lg:text-5xl xl:text-6xl 2xl:text-7xl font-medium absolute z-20 [text-shadow:_3px_3px_6px_rgba(0,0,0,0.3)]">
+                            Minimal Living at its<br></br> finest
                         </h1>
                     </motion.div>
-                    <motion.div 
+                    <motion.div
                         className="flex flex-row gap-2 items-center"
                         variants={itemVariants}
                     >
-                        <motion.button 
+                        <motion.button
                             onClick={handlePrev}
                             variants={buttonVariants}
                             whileHover="hover"
@@ -234,7 +235,7 @@ export default function Marketplace() {
                             />
                         </div>
                         <h1 className="text-lg">{String(propertySlides.length).padStart(2, "0")}</h1>
-                        <motion.button 
+                        <motion.button
                             onClick={handleNext}
                             variants={buttonVariants}
                             whileHover="hover"
@@ -253,11 +254,11 @@ export default function Marketplace() {
                                 See All Properties
                                 <motion.div
                                     animate={{ x: [0, 5, 0] }}
-                                    transition={{ 
-                                        repeat: Infinity, 
-                                        duration: 1.5, 
+                                    transition={{
+                                        repeat: Infinity,
+                                        duration: 1.5,
                                         ease: "easeInOut",
-                                        repeatDelay: 0.5 
+                                        repeatDelay: 0.5
                                     }}
                                 >
                                     <ChevronRight />
@@ -268,28 +269,31 @@ export default function Marketplace() {
                 </motion.div>
 
                 {/* Right side carousel */}
-                <div className="w-8/12 h-4/6 flex flex-col gap-5 relative">
+                <div className="w-12/12 md:w-8/12 h-3/5 md:h-4/6 flex flex-col gap-2 md:gap-5 relative">
+                    <motion.div variants={itemVariants}>
+                        <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold block md:hidden">Marketplace</h4>
+                    </motion.div>
                     <AnimatePresence mode="wait" custom={direction}>
-                        <motion.div 
+                        <motion.div
                             key={currentSlide}
                             custom={direction}
                             variants={slideVariants}
                             initial="enter"
                             animate="center"
                             exit="exit"
-                            className="w-full grid grid-cols-3 gap-6 h-full z-10"
+                            className="w-full grid grid-cols-3 gap-3 md:gap-6 h-full z-10"
                         >
                             {propertySlides[currentSlide].images.map((property, index) => (
-                                <motion.div 
+                                <motion.div
                                     key={index}
-                                    className="w-full h-full bg-[#F8F7F2] relative rounded-xl overflow-hidden shadow-md"
+                                    className="w-full h-full bg-[#F8F7F2] relative rounded-md md:rounded-xl overflow-hidden shadow-md"
                                     initial={{ opacity: 0, y: 20 }}
-                                    animate={{ 
-                                        opacity: 1, 
+                                    animate={{
+                                        opacity: 1,
                                         y: 0,
-                                        transition: { 
+                                        transition: {
                                             delay: index * 0.1,
-                                            duration: 0.5 
+                                            duration: 0.5
                                         }
                                     }}
                                     whileHover="hover"
@@ -307,26 +311,26 @@ export default function Marketplace() {
                                         />
                                     </motion.div>
                                     <div className="absolute inset-0 bg-black/50 z-10"></div>
-                                    <motion.div 
+                                    <motion.div
                                         className="flex flex-col absolute bottom-3 left-5 z-20"
                                         initial={{ opacity: 0, y: 10 }}
-                                        animate={{ 
-                                            opacity: 1, 
+                                        animate={{
+                                            opacity: 1,
                                             y: 0,
-                                            transition: { 
+                                            transition: {
                                                 delay: index * 0.1 + 0.3,
-                                                duration: 0.5 
+                                                duration: 0.5
                                             }
                                         }}
                                     >
-                                        <h1 className="text-xl font-medium text-white">{property.title}</h1>
+                                        <h1 className="text-sm md:text-xl font-medium text-white">{property.title}</h1>
                                     </motion.div>
                                 </motion.div>
                             ))}
                         </motion.div>
                     </AnimatePresence>
 
-                    <motion.div 
+                    <motion.div
                         className="absolute -top-5 -left-5 w-20 h-20 bg-[#7B4F3A44] dark:bg-[#8B5F4D44] rounded-lg z-0"
                         animate={{
                             rotate: [0, 10, 0],
@@ -338,7 +342,7 @@ export default function Marketplace() {
                             ease: "easeInOut"
                         }}
                     />
-                    <motion.div 
+                    <motion.div
                         className="absolute bottom-10 -right-5 w-20 h-20 bg-[#7B4F3A66] dark:bg-[#8B5F4D66] rounded-lg z-0"
                         animate={{
                             rotate: [0, -10, 0],
@@ -352,14 +356,14 @@ export default function Marketplace() {
                         }}
                     />
 
-                    <motion.div 
+                    <motion.div
                         className="flex gap-2 items-center"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.5, delay: 0.6 }}
                     >
                         <motion.div
-                            animate={{ 
+                            animate={{
                                 y: [0, -3, 0],
                                 scale: [1, 1.1, 1]
                             }}
@@ -370,7 +374,7 @@ export default function Marketplace() {
                                 repeatDelay: 1
                             }}
                         >
-                            <MapPin className="text-[#7B4F3A] dark:text-[#8B5F4D]" />
+                            <MapPin className="text-[#7B4F3A] dark:text-[#8B5F4D] text-sm md:text-base" />
                         </motion.div>
                         <AnimatePresence mode="wait">
                             <motion.div
@@ -380,7 +384,7 @@ export default function Marketplace() {
                                 exit={{ opacity: 0, x: -10 }}
                                 transition={{ duration: 0.3 }}
                             >
-                                <h1 className="font-semibold">{propertySlides[currentSlide].location}</h1>
+                                <h1 className="font-semibold text-sm md:text-base">{propertySlides[currentSlide].location}</h1>
                                 <h2 className="text-sm text-gray-600 dark:text-[#666666]">{propertySlides[currentSlide].country}</h2>
                             </motion.div>
                         </AnimatePresence>
@@ -390,20 +394,19 @@ export default function Marketplace() {
                             <motion.button
                                 key={index}
                                 onClick={() => handleDotClick(index)}
-                                className={`h-3 rounded-full transition-all duration-300 ${
-                                    currentSlide === index
+                                className={`h-3 rounded-full transition-all duration-300 ${currentSlide === index
                                         ? "bg-[#7B4F3A] dark:bg-[#8B5F4D] w-6"
                                         : "bg-gray-300 dark:bg-[#555555] w-3"
-                                }`}
+                                    }`}
                                 whileHover={{ scale: 1.2 }}
                                 whileTap={{ scale: 0.9 }}
                                 initial={{ opacity: 0, y: 10 }}
-                                animate={{ 
-                                    opacity: 1, 
+                                animate={{
+                                    opacity: 1,
                                     y: 0,
-                                    transition: { 
+                                    transition: {
                                         delay: index * 0.05 + 0.5,
-                                        duration: 0.3 
+                                        duration: 0.3
                                     }
                                 }}
                                 aria-label={`Go to slide ${index + 1}`}
