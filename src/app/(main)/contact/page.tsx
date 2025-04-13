@@ -72,12 +72,12 @@ export default function ContactUsSection() {
 
     return (
         <motion.section
-            className="h-screen bg-[#F8F7F2] dark:bg-[#333333] flex items-center"
+            className="min-h-fit xl:h-screen bg-[#F8F7F2] dark:bg-[#333333] flex items-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6 }}
         >
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20 lg:py-20 xl:py-20 2xl:py-12 w-full">
                 <motion.div
                     className="text-center mb-12"
                     initial={{ y: -30, opacity: 0 }}

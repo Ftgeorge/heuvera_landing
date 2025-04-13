@@ -162,11 +162,11 @@ export default function AboutUsSection() {
     };
 
     return (
-        <section className="h-screen bg-[#F8F7F2] dark:bg-[#333333] flex items-center relative overflow-hidden">
+        <section className="min-h-fit xl:h-screen bg-[#F8F7F2] dark:bg-[#333333] flex items-center relative overflow-hidden">
             {/* Background decorative elements */}
             <VirtualRealEstateDecorations />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20 lg:py-20 xl:py-20 2xl:py-12 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
                     {/* Left Column - Content */}
                     <div>
@@ -177,8 +177,8 @@ export default function AboutUsSection() {
                             viewport={{ once: true, amount: 0.3 }}
                             variants={slideRight}
                         >
-                            <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold mb-2">About Us</h4>
-                            <h2 className="text-4xl font-bold text-[#323232] dark:text-[#555555] dark:text-[#A7A7A7] mb-4">Reimagining Real Estate for the Digital Age</h2>
+                            <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold mb-2 text-sm md:text-sm lg:text-sm xl:text-base">About Us</h4>
+                            <h2 className="lg:text-2xl xl:text-4xl font-bold text-[#323232] dark:text-[#555555] dark:text-[#A7A7A7] mb-4">Reimagining Real Estate for the Digital Age</h2>
                             <motion.div
                                 className="w-20 h-1 bg-[#7B4F3A] dark:bg-[#8B5F4D] rounded"
                                 initial={{ width: 0 }}
@@ -189,7 +189,7 @@ export default function AboutUsSection() {
                         </motion.div>
 
                         <motion.p
-                            className="text-[#444444] dark:text-[#555555] mb-6 text-lg"
+                            className="text-[#444444] dark:text-[#555555] mb-6 text-sm xl:text-lg"
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
@@ -199,7 +199,7 @@ export default function AboutUsSection() {
                         </motion.p>
 
                         <motion.p
-                            className="text-[#444444] dark:text-[#555555] mb-8 text-lg"
+                            className="text-[#444444] dark:text-[#555555] mb-8 text-sm xl:text-lg"
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
@@ -219,7 +219,7 @@ export default function AboutUsSection() {
                             <motion.div className="flex items-center" variants={statItem}>
                                 <div className="flex-shrink-0 mr-3">
                                     <motion.div
-                                        className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
+                                        className="flex items-center justify-center size-10 xl:size-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
@@ -235,7 +235,7 @@ export default function AboutUsSection() {
                             <motion.div className="flex items-center" variants={statItem}>
                                 <div className="flex-shrink-0 mr-3">
                                     <motion.div
-                                        className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
+                                        className="flex items-center justify-center size-10 xl:size-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
@@ -251,7 +251,7 @@ export default function AboutUsSection() {
                             <motion.div className="flex items-center" variants={statItem}>
                                 <div className="flex-shrink-0 mr-3">
                                     <motion.div
-                                        className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
+                                        className="flex items-center justify-center size-10 xl:size-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
@@ -267,7 +267,7 @@ export default function AboutUsSection() {
                             <motion.div className="flex items-center" variants={statItem}>
                                 <div className="flex-shrink-0 mr-3">
                                     <motion.div
-                                        className="flex items-center justify-center h-12 w-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
+                                        className="flex items-center justify-center size-10 xl:size-12 rounded-md bg-[#7B4F3A44] dark:bg-[#8B5F4D44] text-[#7B4F3A] dark:text-[#8B5F4D]"
                                         whileHover={{ scale: 1.1 }}
                                         transition={{ type: "spring", stiffness: 400, damping: 10 }}
                                     >
@@ -311,7 +311,7 @@ export default function AboutUsSection() {
                             <Image
                                 src="/team.jpg"
                                 alt="Heivera Team"
-                                className="w-full object-cover"
+                                className="w-full object-cover h-46"
                                 width={600}
                                 height={400}
                             />
@@ -378,9 +378,6 @@ export default function AboutUsSection() {
 
                         <motion.div
                             className="absolute top-4 -right-4 w-20 h-20 bg-[#7B4F3A44] dark:bg-[#8B5F4D44] rounded-lg z-0"
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
                             animate={{
                                 rotate: [0, 10, 0],
                                 scale: [1, 1.05, 1]
@@ -393,9 +390,6 @@ export default function AboutUsSection() {
                         ></motion.div>
                         <motion.div
                             className="absolute -bottom-4 left-4 w-20 h-20 bg-[#7B4F3A66] dark:bg-[#8B5F4D66] rounded-lg z-0"
-                            initial={{ opacity: 0, scale: 0.5 }}
-                            whileInView={{ opacity: 1, scale: 1 }}
-                            viewport={{ once: true }}
                             animate={{
                                 rotate: [0, -10, 0],
                                 scale: [1, 1.05, 1]

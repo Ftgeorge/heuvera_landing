@@ -107,7 +107,7 @@ export default function HostWithUsSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                     {/* Left Column - Image */}
-                    <div className="hidden lg:block relative">
+                    <div className="block relative">
                         <motion.div
                             initial="hidden"
                             whileInView="visible"
@@ -123,7 +123,7 @@ export default function HostWithUsSection() {
                             />
                         </motion.div>
                         <motion.div 
-                            className="absolute -bottom-6 -right-6 bg-[#F8F7F2] dark:bg-[#333333] p-6 rounded-lg shadow-lg max-w-xs"
+                            className="absolute -bottom-10 md:-bottom-6 -right-2 md:-right-6 bg-[#F8F7F2] dark:bg-[#333333] p-6 rounded-lg shadow-lg max-w-xs"
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.3 }}
