@@ -13,7 +13,7 @@ const navLinks = [
 
 export default function NavigationBar() {
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-[#F8F7F2] dark:bg-[#333333] backdrop-blur-md shadow-sm">
+        <nav className="fixed top-0 left-0 w-full z-50 bg-transparent backdrop-blur-md">
             <style jsx global>{`
             .animated-underline {
             position: relative;
@@ -44,7 +44,7 @@ export default function NavigationBar() {
                     </div>
 
                     {/* Center: Navigation Links */}
-                    <div className="hidden md:flex flex-1 justify-center lg:space-x-8 xl:space-x-10 2xl:space-x-12 text-sm font-medium text-[#323232] dark:text-[#A7A7A7]">
+                    <div className="hidden md:flex flex-1 justify-center lg:space-x-8 xl:space-x-10 2xl:space-x-12 text-sm font-medium text-[#F8F7F2]">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}

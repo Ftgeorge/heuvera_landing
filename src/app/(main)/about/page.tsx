@@ -92,7 +92,7 @@ export default function AboutUsSection() {
                     <div className="relative">
                         <div className="relative z-10 rounded-lg overflow-hidden shadow-xl mb-8">
                             <Image
-                                src="/apartment.jpg"
+                                src="/team.jpg"
                                 alt="Heivera Team"
                                 className="w-full object-cover"
                                 width={600}
