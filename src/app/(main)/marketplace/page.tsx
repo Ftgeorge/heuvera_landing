@@ -86,18 +86,25 @@ const propertySlides = [
 export default function Marketplace() {
     const [currentSlide, setCurrentSlide] = useState(0);
     const [direction, setDirection] = useState(0);
+    const [isAnimating, setIsAnimating] = useState(false);
 
     const handlePrev = () => {
+        if (isAnimating) return;
+        setIsAnimating(true);
         setDirection(-1);
         setCurrentSlide((prev) => (prev === 0 ? propertySlides.length - 1 : prev - 1));
     };
 
     const handleNext = () => {
+        if (isAnimating) return;
+        setIsAnimating(true);
         setDirection(1);
         setCurrentSlide((prev) => (prev + 1) % propertySlides.length);
     };
 
     const handleDotClick = (index: number) => {
+        if (isAnimating || index === currentSlide) return;
+        setIsAnimating(true);
         setDirection(index > currentSlide ? 1 : -1);
         setCurrentSlide(index);
     };
@@ -107,11 +114,11 @@ export default function Marketplace() {
             handleNext();
         }, 6000);
         return () => clearInterval(interval);
-    }, []);
+    }, [isAnimating]);
 
     const progressWidth = `${((currentSlide + 1) / propertySlides.length) * 100}%`;
 
-    // Framer Motion variants
+    
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -148,7 +155,7 @@ export default function Marketplace() {
         tap: { scale: 0.95 }
     };
 
-    // Variants for image slides
+    
     const slideVariants = {
         enter: (direction: number) => ({
             x: direction > 0 ? 300 : -300,
@@ -162,7 +169,8 @@ export default function Marketplace() {
             transition: {
                 type: "spring",
                 stiffness: 300,
-                damping: 25
+                damping: 25,
+                onComplete: () => setIsAnimating(false)
             }
         },
         exit: (direction: number) => ({
@@ -187,15 +195,14 @@ export default function Marketplace() {
     };
 
     return (
-        <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8 }}
-            className="h-screen bg-[#F8F7F2] dark:bg-[#333333] w-full flex items-center justify-center px-4 md:px-14 lg:px-16 xl:px-20 2xl:px-36 py-10 md:py-0"
-        >
-
-            <div className="w-full flex flex-col-reverse md:flex-row items-center justify-center h-full">
-                {/* Left side */}
+        <div className="h-screen bg-[#F8F7F2] dark:bg-[#333333] w-full flex items-center justify-center px-4 md:px-14 lg:px-16 xl:px-20 2xl:px-36 py-10 md:py-0 overflow-hidden">
+            <motion.div 
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.8 }}
+                className="w-full flex flex-col-reverse md:flex-row items-center justify-center h-full"
+            >
+                
                 <motion.div
                     className="w-12/12 md:w-4/12 pr-6 flex flex-col md:h-4/6 justify-center gap-8 md:gap-16"
                     variants={containerVariants}
@@ -222,6 +229,8 @@ export default function Marketplace() {
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
+                            disabled={isAnimating}
+                            className={isAnimating ? "opacity-50 cursor-not-allowed" : ""}
                         >
                             <GoArrowLeft className="text-[#323232] dark:text-[#555555]" size={30} />
                         </motion.button>
@@ -240,6 +249,8 @@ export default function Marketplace() {
                             variants={buttonVariants}
                             whileHover="hover"
                             whileTap="tap"
+                            disabled={isAnimating}
+                            className={isAnimating ? "opacity-50 cursor-not-allowed" : ""}
                         >
                             <GoArrowRight className="text-[#323232] dark:text-[#555555]" size={30} />
                         </motion.button>
@@ -268,67 +279,70 @@ export default function Marketplace() {
                     </motion.div>
                 </motion.div>
 
-                {/* Right side carousel */}
+                
                 <div className="w-12/12 md:w-8/12 h-3/5 md:h-4/6 flex flex-col gap-2 md:gap-5 relative">
                     <motion.div variants={itemVariants}>
                         <h4 className="text-[#7B4F3A] dark:text-[#8B5F4D] font-semibold block md:hidden">Marketplace</h4>
                     </motion.div>
-                    <AnimatePresence mode="wait" custom={direction}>
-                        <motion.div
-                            key={currentSlide}
-                            custom={direction}
-                            variants={slideVariants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            className="w-full grid grid-cols-3 gap-3 md:gap-6 h-full z-10"
-                        >
-                            {propertySlides[currentSlide].images.map((property, index) => (
-                                <motion.div
-                                    key={index}
-                                    className="w-full h-full bg-[#F8F7F2] relative rounded-md md:rounded-xl overflow-hidden shadow-md"
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{
-                                        opacity: 1,
-                                        y: 0,
-                                        transition: {
-                                            delay: index * 0.1,
-                                            duration: 0.5
-                                        }
-                                    }}
-                                    whileHover="hover"
-                                >
+                    
+                    
+                    <div className="w-full h-[calc(100%-50px)] relative">
+                        <AnimatePresence mode="wait" custom={direction} onExitComplete={() => setIsAnimating(false)}>
+                            <motion.div
+                                key={currentSlide}
+                                custom={direction}
+                                variants={slideVariants}
+                                initial="enter"
+                                animate="center"
+                                exit="exit"
+                                className="w-full grid grid-cols-3 gap-3 md:gap-6 h-full z-10 absolute inset-0"
+                            >
+                                {propertySlides[currentSlide].images.map((property, index) => (
                                     <motion.div
-                                        variants={imageVariants}
-                                        className="h-full w-full"
-                                    >
-                                        <Image
-                                            src={property.image}
-                                            width={500}
-                                            height={500}
-                                            alt={property.title}
-                                            className="h-full w-full object-cover"
-                                        />
-                                    </motion.div>
-                                    <div className="absolute inset-0 bg-black/50 z-10"></div>
-                                    <motion.div
-                                        className="flex flex-col absolute bottom-3 left-5 z-20"
-                                        initial={{ opacity: 0, y: 10 }}
+                                        key={index}
+                                        className="w-full h-full bg-[#F8F7F2] relative rounded-md md:rounded-xl overflow-hidden shadow-md"
+                                        initial={{ opacity: 0, y: 20 }}
                                         animate={{
                                             opacity: 1,
                                             y: 0,
                                             transition: {
-                                                delay: index * 0.1 + 0.3,
+                                                delay: index * 0.1,
                                                 duration: 0.5
                                             }
                                         }}
+                                        whileHover="hover"
                                     >
-                                        <h1 className="text-sm md:text-xl font-medium text-white">{property.title}</h1>
+                                        
+                                        <div className="relative w-full h-full">
+                                            <Image
+                                                src={property.image}
+                                                alt={property.title}
+                                                fill
+                                                sizes="(max-width: 768px) 100vw, 33vw"
+                                                style={{ objectFit: "cover" }}
+                                                priority={true}
+                                            />
+                                        </div>
+                                        <div className="absolute inset-0 bg-black/50 z-10"></div>
+                                        <motion.div
+                                            className="flex flex-col absolute bottom-3 left-5 z-20"
+                                            initial={{ opacity: 0, y: 10 }}
+                                            animate={{
+                                                opacity: 1,
+                                                y: 0,
+                                                transition: {
+                                                    delay: index * 0.1 + 0.3,
+                                                    duration: 0.5
+                                                }
+                                            }}
+                                        >
+                                            <h1 className="text-sm md:text-xl font-medium text-white">{property.title}</h1>
+                                        </motion.div>
                                     </motion.div>
-                                </motion.div>
-                            ))}
-                        </motion.div>
-                    </AnimatePresence>
+                                ))}
+                            </motion.div>
+                        </AnimatePresence>
+                    </div>
 
                     <motion.div
                         className="absolute -top-5 -left-5 w-20 h-20 bg-[#7B4F3A44] dark:bg-[#8B5F4D44] rounded-lg z-0"
@@ -376,28 +390,32 @@ export default function Marketplace() {
                         >
                             <MapPin className="text-[#7B4F3A] dark:text-[#8B5F4D] text-sm md:text-base" />
                         </motion.div>
-                        <AnimatePresence mode="wait">
-                            <motion.div
-                                key={currentSlide}
-                                initial={{ opacity: 0, x: 10 }}
-                                animate={{ opacity: 1, x: 0 }}
-                                exit={{ opacity: 0, x: -10 }}
-                                transition={{ duration: 0.3 }}
-                            >
-                                <h1 className="font-semibold text-sm md:text-base">{propertySlides[currentSlide].location}</h1>
-                                <h2 className="text-sm text-gray-600 dark:text-[#666666]">{propertySlides[currentSlide].country}</h2>
-                            </motion.div>
-                        </AnimatePresence>
+                        <div className="h-12 flex items-center"> 
+                            <AnimatePresence mode="wait">
+                                <motion.div
+                                    key={currentSlide}
+                                    initial={{ opacity: 0, x: 10 }}
+                                    animate={{ opacity: 1, x: 0 }}
+                                    exit={{ opacity: 0, x: -10 }}
+                                    transition={{ duration: 0.3 }}
+                                    className="absolute"
+                                >
+                                    <h1 className="font-semibold text-sm md:text-base">{propertySlides[currentSlide].location}</h1>
+                                    <h2 className="text-sm text-gray-600 dark:text-[#666666]">{propertySlides[currentSlide].country}</h2>
+                                </motion.div>
+                            </AnimatePresence>
+                        </div>
                     </motion.div>
                     <div className="w-full flex justify-center gap-2 mt-2">
                         {propertySlides.map((_, index) => (
                             <motion.button
                                 key={index}
                                 onClick={() => handleDotClick(index)}
-                                className={`h-3 rounded-full transition-all duration-300 ${currentSlide === index
+                                className={`h-3 rounded-full transition-all duration-300 ${
+                                    currentSlide === index
                                         ? "bg-[#7B4F3A] dark:bg-[#8B5F4D] w-6"
                                         : "bg-gray-300 dark:bg-[#555555] w-3"
-                                    }`}
+                                }`}
                                 whileHover={{ scale: 1.2 }}
                                 whileTap={{ scale: 0.9 }}
                                 initial={{ opacity: 0, y: 10 }}
@@ -409,12 +427,13 @@ export default function Marketplace() {
                                         duration: 0.3
                                     }
                                 }}
+                                disabled={isAnimating}
                                 aria-label={`Go to slide ${index + 1}`}
                             />
                         ))}
                     </div>
                 </div>
-            </div>
-        </motion.div>
+            </motion.div>
+        </div>
     );
 }

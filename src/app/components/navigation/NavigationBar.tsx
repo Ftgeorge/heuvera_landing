@@ -1,9 +1,9 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Button from "../Button";
 import { HeuveraLogo } from "../logo/HeuveraLogo";
-import { ArrowRight, LogIn, Menu } from "lucide-react";
+import { LogIn, Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const navLinks = [
@@ -14,13 +14,15 @@ const navLinks = [
 ];
 
 export default function NavigationBar() {
-    const [currentPage, setCurrentPage] = useState<string>(""); 
+    const [currentPage, setCurrentPage] = useState<string>("");
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     const scrollToSection = (sectionId: string) => {
         const section = document.getElementById(sectionId);
         if (section) {
             section.scrollIntoView({ behavior: "smooth" });
             setCurrentPage(sectionId);
+            setIsMobileMenuOpen(false);
         }
     };
 
@@ -40,6 +42,48 @@ export default function NavigationBar() {
         sections.forEach((section) => observer.observe(section));
         return () => sections.forEach((section) => observer.unobserve(section));
     }, []);
+
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'auto';
+        }
+
+        return () => {
+            document.body.style.overflow = 'auto';
+        };
+    }, [isMobileMenuOpen]);
+
+    
+    const menuVariants = {
+        hidden: { opacity: 0, height: 0 },
+        visible: {
+            opacity: 1,
+            height: "100vh",
+            transition: {
+                duration: 0.3,
+                when: "beforeChildren",
+                staggerChildren: 0.1
+            }
+        },
+        exit: {
+            opacity: 0,
+            height: 0,
+            transition: {
+                duration: 0.3,
+                when: "afterChildren",
+                staggerChildren: 0.05,
+                staggerDirection: -1
+            }
+        }
+    };
+
+    const itemVariants = {
+        hidden: { opacity: 0, y: 20 },
+        visible: { opacity: 1, y: 0 },
+        exit: { opacity: 0, y: -20 }
+    };
 
     return (
         <motion.nav
@@ -72,7 +116,7 @@ export default function NavigationBar() {
 
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
-                    {/* Left: Logo */}
+
                     <motion.div
                         initial={{ x: -20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
@@ -82,7 +126,7 @@ export default function NavigationBar() {
                         <HeuveraLogo width={30} height={30} />
                     </motion.div>
 
-                    {/* Center: Navigation Links */}
+
                     <div className="hidden md:flex flex-1 justify-center lg:space-x-8 xl:space-x-10 2xl:space-x-12 text-sm font-medium text-[#F8F7F2]">
                         {navLinks.map((link, index) => (
                             <motion.button
@@ -91,8 +135,8 @@ export default function NavigationBar() {
                                 className="hover:text-[#7b4f3a] transition animated-underline"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
-                                transition={{ 
-                                    type: "spring", 
+                                transition={{
+                                    type: "spring",
                                     stiffness: 300,
                                     delay: 0.4 + index * 0.1,
                                     duration: 0.3,
@@ -105,9 +149,9 @@ export default function NavigationBar() {
                         ))}
                     </div>
 
-                    {/* Right: Login CTA */}
+
                     <motion.div
-                        className="w-33"
+                        className="hidden md:block w-33"
                         initial={{ x: 20, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
                         transition={{ delay: 0.5, duration: 0.4 }}
@@ -118,19 +162,63 @@ export default function NavigationBar() {
                         </Button>
                     </motion.div>
 
-                    {/* Mobile Menu Button */}
+
                     <motion.div
-                        className="md:hidden"
+                        className="md:hidden z-60"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                     >
-                        <button className="text-gray-700">
-                            <Menu size={24} />
+                        <button
+                            className="text-[#F8F7F2] p-2 rounded-full focus:outline-none"
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        >
+                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
                     </motion.div>
                 </div>
             </div>
+
+
+            <AnimatePresence>
+                {isMobileMenuOpen && (
+                    <motion.div
+                        className="md:hidden fixed inset-0 bg-black/90 backdrop-blur-lg z-40 pt-20 px-6 flex flex-col"
+                        variants={menuVariants}
+                        initial="hidden"
+                        animate="visible"
+                        exit="exit"
+                    >
+                        <div className="flex flex-col items-center space-y-8 mt-12">
+                            {navLinks.map((link, index) => (
+                                <motion.button
+                                    key={link.name}
+                                    onClick={() => scrollToSection(link.href)}
+                                    className="text-xl font-medium text-[#F8F7F2] hover:text-[#7b4f3a] transition w-full text-center py-3"
+                                    variants={itemVariants}
+                                    whileTap={{ scale: 0.95 }}
+                                >
+                                    {link.name}
+                                </motion.button>
+                            ))}
+
+
+                            <motion.div
+                                className="w-full mt-6"
+                                variants={itemVariants}
+                            >
+                                <Button
+                                    className="w-full justify-center gap-2 py-4"
+                                    href="/login"
+                                >
+                                    Login
+                                    <LogIn />
+                                </Button>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </motion.nav>
     );
 }

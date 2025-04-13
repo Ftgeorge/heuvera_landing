@@ -1,4 +1,3 @@
-// components/AboutUsSection.jsx
 "use client";
 
 import Button from '@/app/components/Button';
@@ -8,7 +7,7 @@ import { Home, Building, Key, Map, Wifi, Globe, Compass, Cpu, Database, Lock, Sh
 
 
 export default function AboutUsSection() {
-    // Animation variants
+    
     const fadeIn = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0.6 } }
@@ -97,7 +96,6 @@ export default function AboutUsSection() {
                     <Home className="w-full h-full stroke-[#7B4F3A] dark:stroke-[#8B5F4D]" strokeWidth={1.5} />
                 </motion.div>
 
-                {/* Top-Right Corner: Building Icon */}
                 <motion.div
                     className="absolute w-16 h-16 opacity-30 right-4 top-4"
                     initial={{ opacity: 0, scale: 0.5 }}
@@ -117,7 +115,6 @@ export default function AboutUsSection() {
                     <Building className="w-full h-full stroke-[#7B4F3A] dark:stroke-[#8B5F4D]" strokeWidth={1.5} />
                 </motion.div>
 
-                {/* Bottom-Left Corner: Key Icon */}
                 <motion.div
                     className="absolute w-16 h-16 opacity-30 left-4 bottom-4"
                     initial={{ opacity: 0, scale: 0.5 }}
@@ -137,7 +134,6 @@ export default function AboutUsSection() {
                     <Key className="w-full h-full stroke-[#7B4F3A] dark:stroke-[#8B5F4D]" strokeWidth={1.5} />
                 </motion.div>
 
-                {/* Bottom-Right Corner: Cpu (Digital Property) Icon */}
                 <motion.div
                     className="absolute w-16 h-16 opacity-30 right-4 bottom-4"
                     initial={{ opacity: 0, scale: 0.5 }}
@@ -163,12 +159,11 @@ export default function AboutUsSection() {
 
     return (
         <section className="min-h-fit xl:h-screen bg-[#F8F7F2] dark:bg-[#333333] flex items-center relative overflow-hidden">
-            {/* Background decorative elements */}
             <VirtualRealEstateDecorations />
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-20 lg:py-20 xl:py-20 2xl:py-12 relative z-10">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-20 lg:py-20 xl:py-20 2xl:py-12 relative z-10">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                    {/* Left Column - Content */}
+                    
                     <div>
                         <motion.div
                             className="mb-8"
@@ -299,7 +294,6 @@ export default function AboutUsSection() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column - Team Image & Values */}
                     <div className="relative">
                         <motion.div
                             className="relative z-10 rounded-lg overflow-hidden shadow-xl mb-8"
@@ -311,7 +305,7 @@ export default function AboutUsSection() {
                             <Image
                                 src="/team.jpg"
                                 alt="Heivera Team"
-                                className="w-full object-cover h-46"
+                                className="w-full object-cover h-46 xl:h-84"
                                 width={600}
                                 height={400}
                             />

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import Button from "../Button";
 import { ChevronRight, Compass } from "lucide-react";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function Hero() {
     const [scrollY, setScrollY] = useState(0);
@@ -93,7 +94,7 @@ export default function Hero() {
                 className="absolute inset-0 bg-black/40 z-10"
             />
 
-            
+
             <div className="relative h-full flex flex-col items-center justify-center z-20 px-4 md:px-8">
                 <motion.div
                     variants={containerVariants}
@@ -138,49 +139,51 @@ export default function Hero() {
                                 </motion.div>
                             </Button>
                         </motion.div>
-
+                        <Link href="#about">
+                            <motion.div
+                                variants={buttonHoverVariants}
+                                whileHover="hover"
+                                whileTap="tap"
+                            >
+                                <button className="gap-2 text-white font-medium px-8 md:px-8 lg:px-6 xl:px-8 2xl:px-8 py-2.5 lg:py-2 xl:py-2.5 rounded-lg transition duration-150 flex items-center justify-center text-xs md:text-sm bg-transparent dark:bg-transparent hover:bg-white/10 dark:hover:bg-white/10 border-2 border-white transition-colors">
+                                    Learn More
+                                    <motion.div
+                                        animate={{ x: [0, 5, 0] }}
+                                        transition={{
+                                            repeat: Infinity,
+                                            duration: 2,
+                                            ease: "easeInOut",
+                                            repeatDelay: 0.5
+                                        }}
+                                    >
+                                        <ChevronRight />
+                                    </motion.div>
+                                </button>
+                            </motion.div>
+                        </Link>
+                    </motion.div>
+                </motion.div>
+                <Link href="#marketplace">
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ delay: 1.5, duration: 0.8 }}
+                        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+                    >
                         <motion.div
-                            variants={buttonHoverVariants}
-                            whileHover="hover"
-                            whileTap="tap"
+                            animate={{ y: [0, 8, 0] }}
+                            transition={{
+                                repeat: Infinity,
+                                duration: 1.5,
+                                ease: "easeInOut"
+                            }}
                         >
-                            <Button className="gap-2 bg-transparent dark:bg-transparent hover:bg-white/10 dark:hover:bg-white/10 border-2 border-white text-white transition-colors">
-                                Learn More
-                                <motion.div
-                                    animate={{ x: [0, 5, 0] }}
-                                    transition={{
-                                        repeat: Infinity,
-                                        duration: 2,
-                                        ease: "easeInOut",
-                                        repeatDelay: 0.5
-                                    }}
-                                >
-                                    <ChevronRight />
-                                </motion.div>
-                            </Button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                                <path d="M12 5v14M5 12l7 7 7-7" />
+                            </svg>
                         </motion.div>
                     </motion.div>
-                </motion.div>
-
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 1.5, duration: 0.8 }}
-                    className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-                >
-                    <motion.div
-                        animate={{ y: [0, 8, 0] }}
-                        transition={{
-                            repeat: Infinity,
-                            duration: 1.5,
-                            ease: "easeInOut"
-                        }}
-                    >
-                        <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                            <path d="M12 5v14M5 12l7 7 7-7" />
-                        </svg>
-                    </motion.div>
-                </motion.div>
+                </Link>
             </div>
         </section>
     );

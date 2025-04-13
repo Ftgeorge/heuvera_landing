@@ -22,18 +22,15 @@ export default function ContactUsSection() {
     const handleSubmit = (e: any) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        // Reset form
         setFormData({
             name: '',
             email: '',
             subject: '',
             message: ''
         });
-        // Show success message
         alert('Thank you for your message! We will get back to you shortly.');
     };
 
-    // Animation variants
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -117,7 +114,6 @@ export default function ContactUsSection() {
                         initial="hidden"
                         animate="visible"
                     >
-                        {/* Email Card */}
                         <motion.div
                             className="bg-[#7B4F3A06] dark:bg-[#44444422] p-6 rounded-lg"
                             variants={itemVariants}
@@ -140,7 +136,6 @@ export default function ContactUsSection() {
                             </div>
                         </motion.div>
 
-                        {/* Phone Card */}
                         <motion.div
                             className="bg-[#7B4F3A06] dark:bg-[#44444422] p-6 rounded-lg"
                             variants={itemVariants}
@@ -163,7 +158,6 @@ export default function ContactUsSection() {
                             </div>
                         </motion.div>
 
-                        {/* Location Card */}
                         <motion.div
                             className="bg-[#7B4F3A06] dark:bg-[#44444422] p-6 rounded-lg"
                             variants={itemVariants}
@@ -186,7 +180,6 @@ export default function ContactUsSection() {
                             </div>
                         </motion.div>
 
-                        {/* Chat Card */}
                         <motion.div
                             className="bg-[#7B4F3A06] dark:bg-[#44444422] p-6 rounded-lg"
                             variants={itemVariants}
@@ -216,7 +209,6 @@ export default function ContactUsSection() {
                         </motion.div>
                     </motion.div>
 
-                    {/* Contact Form */}
                     <motion.div
                         className="lg:col-span-2 bg-[#F8F7F2] dark:bg-[#333333] rounded-lg shadow-lg p-8"
                         initial={{ x: 50, opacity: 0 }}

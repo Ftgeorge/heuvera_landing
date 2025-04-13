@@ -64,7 +64,7 @@ export default function Footer() {
         },
     ];
 
-    // Animation variants
+    
     const containerVariants = {
         hidden: { opacity: 0 },
         visible: {
@@ -191,7 +191,7 @@ export default function Footer() {
                                 </motion.div>
                             ))}
 
-                            {/* Socials column */}
+                          
                             <motion.div variants={itemVariants}>
                                 <motion.h3
                                     className="text-xs font-semibold text-[#323232] dark:text-[#A7A7A7] uppercase tracking-wider mb-4"

@@ -11,28 +11,26 @@ export default function HostWithUsSection() {
 
     useEffect(() => {
         const handleScroll = () => {
-            // Requesting animation frame for smoother performance
             window.requestAnimationFrame(() => {
                 setScrollY(window.scrollY);
             });
         };
 
-        // Add event listener
         window.addEventListener("scroll", handleScroll, { passive: true });
 
-        // Initial call to set position
+        
         handleScroll();
 
-        // Cleanup
+        
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
 
-    // Using a reduced multiplier for more subtle effect
+   
     const parallaxOffset = scrollY * 0.2;
 
     const backgroundImage = "http://images.unsplash.com/photo-1728825445493-1a6e89164511?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // Make sure this image exists in your public folder
 
-    // Animation variants
+   
     const fadeIn = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0.6 } }
@@ -79,7 +77,7 @@ export default function HostWithUsSection() {
 
     return (
         <section className="relative h-screen flex items-center overflow-hidden">
-            {/* Background image with parallax effect */}
+            
             <motion.div
                 className="absolute inset-0 bg-center bg-no-repeat bg-cover will-change-transform"
                 initial={{ opacity: 0 }}
@@ -87,7 +85,7 @@ export default function HostWithUsSection() {
                 transition={{ duration: 1 }}
                 style={{
                     backgroundImage: `url(${backgroundImage})`,
-                    height: '120%', // Oversize the image slightly to avoid blank areas when scrolling
+                    height: '120%', 
                     top: '-50%',
                     transform: `translateY(${parallaxOffset}px)`,
                     transition: 'transform 0.1s ease-out',
@@ -95,7 +93,7 @@ export default function HostWithUsSection() {
                 }}
             />
 
-            {/* Overlay */}
+          
             <motion.div 
                 className="absolute inset-0 bg-black/80 z-10"
                 initial={{ opacity: 0 }}
@@ -103,10 +101,10 @@ export default function HostWithUsSection() {
                 transition={{ duration: 0.8 }}
             />
             
-            {/* Content */}
+           
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-20">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    {/* Left Column - Image */}
+                   
                     <div className="block relative">
                         <motion.div
                             initial="hidden"
@@ -148,7 +146,7 @@ export default function HostWithUsSection() {
                         </motion.div>
                     </div>
 
-                    {/* Right Column - Content */}
+                   
                     <div>
                         <motion.div 
                             className="mb-6"
