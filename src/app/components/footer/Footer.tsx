@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { HeuveraLogo } from "../logo/HeuveraLogo";
-
+import { motion } from "framer-motion";
 
 export default function Footer() {
     const footerLinks = [
@@ -31,7 +31,6 @@ export default function Footer() {
                 { text: "Privacy Policy", href: "/privacy" },
             ],
         },
-
     ];
 
     const socialLinks = [
@@ -65,95 +64,179 @@ export default function Footer() {
         },
     ];
 
+    // Animation variants
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+                delayChildren: 0.2,
+            },
+        },
+    };
+
+    const itemVariants = {
+        hidden: { y: 20, opacity: 0 },
+        visible: {
+            y: 0,
+            opacity: 1,
+            transition: { type: "spring", stiffness: 50 },
+        },
+    };
+
+    const logoVariants = {
+        hidden: { scale: 0.8, opacity: 0 },
+        visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 100,
+                delay: 0.1,
+            },
+        },
+    };
+
+    const socialVariants = {
+        hidden: { scale: 0, opacity: 0 },
+        visible: {
+            scale: 1,
+            opacity: 1,
+            transition: {
+                type: "spring",
+                stiffness: 200,
+            },
+        },
+    };
+
+    const copyrightVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: { delay: 0.8, duration: 0.5 },
+        },
+    };
 
     return (
-        <footer className="bg-[#F8F7F2] dark:bg-[#333333] py-16 px-4 md:px-8 lg:px-12 xl:px-14 2xl:px-20 relative overflow-hidden">
-            <style jsx global>{`
-        .animated-underline {
-          position: relative;
-          display: inline-block;
-        }
-
-        .animated-underline::after {
-          content: "";
-          position: absolute;
-          width: 0;
-          height: 1px;
-          bottom: -2px;
-          left: 0;
-          background-color: #7b4f3a;
-          transition: width 0.3s ease-in-out;
-        }
-
-        .animated-underline:hover::after {
-          width: 100%;
-        }
-      `}</style>
-
+        <motion.footer
+            className="bg-[#F8F7F2] dark:bg-[#333333] py-16 px-4 md:px-8 lg:px-12 xl:px-14 2xl:px-20 relative overflow-hidden"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
+        >
             <div className="max-w-7xl mx-auto relative">
-                <div className="flex justify-center mb-12">
+                <motion.div
+                    className="flex justify-center mb-12"
+                    variants={logoVariants}
+                >
                     <div className="w-full flex items-center justify-center">
-                        <HeuveraLogo width={35} height={35} />
+                        <motion.div
+                            whileHover={{ rotate: 360, scale: 1.1 }}
+                            transition={{ duration: 0.6 }}
+                        >
+                            <HeuveraLogo width={35} height={35} />
+                        </motion.div>
                     </div>
-                </div>
+                </motion.div>
 
                 <div className="">
                     <div className="flex flex-row items-start w-full">
                         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-32">
-                            {footerLinks.map((section) => (
-                                <div key={section.title}>
-                                    <h3 className="text-xs font-semibold text-[#323232] dark:text-[#A7A7A7] uppercase tracking-wider mb-4">
+                            {footerLinks.map((section, index) => (
+                                <motion.div
+                                    key={section.title}
+                                    variants={itemVariants}
+                                    custom={index}
+                                >
+                                    <motion.h3
+                                        className="text-xs font-semibold text-[#323232] dark:text-[#A7A7A7] uppercase tracking-wider mb-4"
+                                        variants={itemVariants}
+                                    >
                                         {section.title}
-                                    </h3>
+                                    </motion.h3>
                                     <ul className="space-y-3">
-                                        {section.links.map((link) => (
-                                            <li key={link.href}>
+                                        {section.links.map((link, linkIndex) => (
+                                            <motion.li
+                                                key={link.href}
+                                                variants={itemVariants}
+                                                custom={index + linkIndex * 0.1}
+                                            >
                                                 <Link
                                                     href={link.href}
-                                                    className="text-[#A7A7A7] hover:text-[#7B4F3A] text-sm animated-underline"
+                                                    className="text-[#A7A7A7] hover:text-[#7B4F3A] text-sm"
                                                 >
-                                                    {link.text}
+                                                    <motion.span
+                                                        className="inline-block relative"
+                                                        whileHover={{
+                                                            x: 5,
+                                                            transition: { duration: 0.2 },
+                                                        }}
+                                                    >
+                                                        {link.text}
+                                                        <motion.span
+                                                            className="absolute bottom-0 left-0 w-full h-px bg-[#7B4F3A]"
+                                                            initial={{ scaleX: 0, originX: 0 }}
+                                                            whileHover={{
+                                                                scaleX: 1,
+                                                                transition: { duration: 0.3 },
+                                                            }}
+                                                        />
+                                                    </motion.span>
                                                 </Link>
-                                            </li>
+                                            </motion.li>
                                         ))}
                                     </ul>
-                                </div>
+                                </motion.div>
                             ))}
 
                             {/* Socials column */}
-                            <div>
-                                <h3 className="text-xs font-semibold text-[#323232] dark:text-[#A7A7A7] uppercase tracking-wider mb-4">
+                            <motion.div variants={itemVariants}>
+                                <motion.h3
+                                    className="text-xs font-semibold text-[#323232] dark:text-[#A7A7A7] uppercase tracking-wider mb-4"
+                                    variants={itemVariants}
+                                >
                                     SOCIALS
-                                </h3>
+                                </motion.h3>
                                 <div className="flex space-x-4 mt-1">
-                                    {socialLinks.map((social) => (
-                                        <Link
+                                    {socialLinks.map((social, index) => (
+                                        <motion.div
                                             key={social.name}
-                                            href={social.href}
-                                            className="text-[#A7A7A7] hover:text-[#7B4F3A] transition-colors"
-                                            aria-label={social.name}
+                                            variants={socialVariants}
+                                            custom={index}
+                                            whileHover={{ y: -5, scale: 1.2 }}
+                                            whileTap={{ scale: 0.9 }}
                                         >
-                                            <svg
-                                                width="20"
-                                                height="20"
-                                                fill="currentColor"
-                                                viewBox="0 0 24 24"
+                                            <Link
+                                                href={social.href}
+                                                className="text-[#A7A7A7] hover:text-[#7B4F3A] transition-colors"
+                                                aria-label={social.name}
                                             >
-                                                {social.icon}
-                                            </svg>
-                                        </Link>
+                                                <svg
+                                                    width="20"
+                                                    height="20"
+                                                    fill="currentColor"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    {social.icon}
+                                                </svg>
+                                            </Link>
+                                        </motion.div>
                                     ))}
                                 </div>
-                            </div>
+                            </motion.div>
                         </div>
                     </div>
-
                 </div>
 
-                <div className="text-center text-sm text-[#A7A7A7] mt-8">
+                <motion.div
+                    className="text-center text-sm text-[#A7A7A7] mt-8"
+                    variants={copyrightVariants}
+                >
                     © 2025 Heuvera. All Rights Reserved
-                </div>
+                </motion.div>
             </div>
-        </footer>
+        </motion.footer>
     );
 }
