@@ -13,7 +13,7 @@ const navLinks = [
 
 export default function NavigationBar() {
     return (
-        <nav className="fixed top-0 left-0 w-full z-50 bg-[#F8F7F2] backdrop-blur-md shadow-sm">
+        <nav className="fixed top-0 left-0 w-full z-50 bg-[#F8F7F2] dark:bg-[#333333] backdrop-blur-md shadow-sm">
             <style jsx global>{`
             .animated-underline {
             position: relative;
@@ -39,12 +39,12 @@ export default function NavigationBar() {
             <div className="mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-20">
                     {/* Left: Logo */}
-                    <div className="flex-shrink-0">
+                    <div className="flex-shrink-0 w-33">
                         <HeuveraLogo width={30} height={30} />
                     </div>
 
                     {/* Center: Navigation Links */}
-                    <div className="hidden md:flex flex-1 justify-center lg:space-x-8 xl:space-x-10 2xl:space-x-12 text-sm font-medium text-gray-700">
+                    <div className="hidden md:flex flex-1 justify-center lg:space-x-8 xl:space-x-10 2xl:space-x-12 text-sm font-medium text-[#323232] dark:text-[#A7A7A7]">
                         {navLinks.map((link) => (
                             <a
                                 key={link.name}
@@ -58,11 +58,13 @@ export default function NavigationBar() {
                     </div>
 
                     {/* Right: Login CTA */}
-                    
-                    <Button className="max-w-fit gap-2" href="/login">
-                        Login
-                        <LogIn/>
-                    </Button>
+                    <div className="w-33">
+                        <Button className="max-w-fit gap-2 flex-shrink-0" href="/login">
+                            Login
+                            <LogIn />
+                        </Button>
+                    </div>
+
 
                     {/* Mobile Menu Button */}
                     <div className="md:hidden">
