@@ -103,28 +103,28 @@ export default function Hero() {
                 >
                     <motion.h1
                         variants={itemVariants}
-                        className="text-5xl md:text-6xl font-bold mb-4 leading-tight"
+                        className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl 2xl:text-6xl font-bold mb-4 leading-tight"
                     >
                         Welcome to Heuvera
                     </motion.h1>
 
                     <motion.p
                         variants={itemVariants}
-                        className="text-xl md:text-2xl text-gray-200 mb-8"
+                        className="text-base md:text-xl lg:md:text-xl xl:text-xl 2xl:text-2xl text-gray-200 mb-8"
                     >
                         Discover virtual real estate reimagined. Explore, host, and connect in a whole new way.
                     </motion.p>
 
                     <motion.div
                         variants={itemVariants}
-                        className="flex flex-col sm:flex-row justify-center gap-4 mt-6"
+                        className="flex flex-row justify-center gap-4 mt-6"
                     >
                         <motion.div
                             variants={buttonHoverVariants}
                             whileHover="hover"
                             whileTap="tap"
                         >
-                            <Button className="px-8 py-3 gap-2">
+                            <Button className="gap-2">
                                 Explore Properties
                                 <motion.div
                                     animate={{ x: [0, 5, 0] }}
@@ -144,7 +144,7 @@ export default function Hero() {
                             whileHover="hover"
                             whileTap="tap"
                         >
-                            <Button className="px-8 py-3 bg-transparent dark:bg-transparent hover:bg-white/10 dark:hover:bg-white/10 border-2 border-white text-white transition-colors">
+                            <Button className="gap-2 bg-transparent dark:bg-transparent hover:bg-white/10 dark:hover:bg-white/10 border-2 border-white text-white transition-colors">
                                 Learn More
                                 <motion.div
                                     animate={{ x: [0, 5, 0] }}
