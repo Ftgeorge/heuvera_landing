@@ -2,7 +2,7 @@
 
 import Button from '@/app/components/Button';
 import Image from 'next/image';
-import { motion, Variants } from 'framer-motion';
+import { motion, Variants, Easing } from 'framer-motion';
 import { Home, Building, Key, Map, Wifi, Globe, Compass, Cpu, Database, Lock, Shield, Clock, Award, Users } from 'lucide-react';
 
 
@@ -46,7 +46,7 @@ export default function AboutUsSection() {
             opacity: 1,
             transition: {
                 duration: 0.4,
-                ease: "easeOut"
+                ease: [0.4, 0, 0.2, 1] as Easing
             }
         }
     };
@@ -69,7 +69,7 @@ export default function AboutUsSection() {
             opacity: 1,
             transition: {
                 duration: 0.5,
-                ease: "easeOut"
+                ease: [0.4, 0, 0.2, 1] as Easing
             }
         }
     };
