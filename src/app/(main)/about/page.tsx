@@ -2,33 +2,33 @@
 
 import Button from '@/app/components/Button';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, Variants } from 'framer-motion';
 import { Home, Building, Key, Map, Wifi, Globe, Compass, Cpu, Database, Lock, Shield, Clock, Award, Users } from 'lucide-react';
 
 
 export default function AboutUsSection() {
     
-    const fadeIn = {
+    const fadeIn: Variants = {
         hidden: { opacity: 0 },
         visible: { opacity: 1, transition: { duration: 0.6 } }
     };
 
-    const slideUp = {
+    const slideUp: Variants = {
         hidden: { y: 50, opacity: 0 },
         visible: { y: 0, opacity: 1, transition: { duration: 0.5 } }
     };
 
-    const slideRight = {
+    const slideRight: Variants = {
         hidden: { x: -50, opacity: 0 },
         visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
     };
 
-    const slideLeft = {
+    const slideLeft: Variants = {
         hidden: { x: 50, opacity: 0 },
         visible: { x: 0, opacity: 1, transition: { duration: 0.5 } }
     };
 
-    const statsContainer = {
+    const statsContainer: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -39,7 +39,7 @@ export default function AboutUsSection() {
         }
     };
 
-    const statItem = {
+    const statItem: Variants = {
         hidden: { y: 20, opacity: 0 },
         visible: {
             y: 0,
@@ -51,7 +51,7 @@ export default function AboutUsSection() {
         }
     };
 
-    const valuesContainer = {
+    const valuesContainer: Variants = {
         hidden: { opacity: 0 },
         visible: {
             opacity: 1,
@@ -62,7 +62,7 @@ export default function AboutUsSection() {
         }
     };
 
-    const valueItem = {
+    const valueItem: Variants = {
         hidden: { x: 20, opacity: 0 },
         visible: {
             x: 0,
